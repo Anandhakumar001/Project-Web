@@ -245,7 +245,7 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    <center><a href="index.html" class="back-button">Back to Home</a></center><br><br>
+    <center><a class='back-button' href='/'>Back to Home</a></center><br><br>
 
     <script>
         document.getElementById("registrationForm").addEventListener("submit", async function(event) {
@@ -277,7 +277,8 @@
                 teamLeaderPhone: document.getElementById("teamLeaderPhone").value
             };
         
-            let url = "https://script.google.com/macros/s/AKfycbxmEhrX2QJb4uMZMgeMeCyGLodbx56LCaA_2BKJktRZ4H2Y4i4Qu9NvpuRc4AiYrIbk3g/exec";
+            let url = "https://script.google.com/macros/s/AKfycbxmEhrX2QJb4uMZMgeMeCyGLodbx56LCaA_2BKJktRZ4H2Y4i4Qu9NvpuRc4AiYrIbk3g/exec"; // Replace with your Web App URL
+        
             try {
                 let response = await fetch(url, {
                     method: "POST",
