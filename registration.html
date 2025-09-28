@@ -1,182 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Team Registration</title>
-   <style>
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      margin: 0;
-      height: 100vh;
-      overflow: hidden; /* stop page scrolling */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Registration</title>
+    <link rel="icon" href="logo1.png" type="image/png">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow: auto;
+        }
+        .terms-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    font-size: 10px;
+    max-width: 400px;
+    background: #f9f9f9;
+    margin: 20px auto;
+    text-align: left;
+    color:black;
+}
 
-    /* Fixed background video */
-    .background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(40%);
-    }
+.terms-container ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
 
-    /* Transparent form box */
-    form {
-      background: transparent;     /* fully transparent */
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      height: 90vh;                /* form takes most of the screen */
-      margin: auto;
-      overflow-y: auto;            /* scroll inside form */
-    }
+.terms-container li {
+    margin-bottom: 10px;
+}
 
-    h2, h3 {
-      text-align: center;
-    }
 
-    /* Transparent inputs */
-    input, select {
-      width: 97%;
-      padding: 8px;
-      margin: 5px 0 15px;
-      border-radius: 5px;
-      border: 1px solid white;
-      background: transparent;     /* transparent input */
-      color: white;
-    }
-
-    button {
-      background: green;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      width: 100%;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <!-- fixed video background -->
-  <video class="background-video" autoplay loop muted>
-    <source src="background.mp4" type="video/mp4">
-  </video>
-  <h2 style="text-align:center;">Team Registration</h2>
-  <form id="registrationForm">
-    <input type="text" id="teamName" placeholder="Team Name" required />
-
-    <h3>Team Leader</h3>
-    <input type="text" id="teamLeaderReg" placeholder="Register Number" required />
-    <input type="text" id="teamLeaderName" placeholder="Name" required />
-    <input type="text" id="teamLeaderDept" placeholder="Department" required />
-    <input type="text" id="teamLeaderStream" placeholder="Stream" required />
-    <input type="text" id="teamLeaderYear" placeholder="Year" required />
-
-    <h3>Participant 1</h3>
-    <input type="text" id="participant1Name" placeholder="Name" required />
-    <input type="text" id="participant1Reg" placeholder="Register Number" required />
-    <input type="text" id="participant1Dept" placeholder="Department" required />
-    <input type="text" id="participant1Stream" placeholder="Stream" required />
-    <input type="text" id="participant1Year" placeholder="Year" required />
-
-    <h3>Participant 2</h3>
-    <input type="text" id="participant2Name" placeholder="Name" required />
-    <input type="text" id="participant2Reg" placeholder="Register Number" required />
-    <input type="text" id="participant2Dept" placeholder="Department" required />
-    <input type="text" id="participant2Stream" placeholder="Stream" required />
-    <input type="text" id="participant2Year" placeholder="Year" required />
-
-    <h3>Participant 3</h3>
-    <input type="text" id="participant3Name" placeholder="Name" required />
-    <input type="text" id="participant3Reg" placeholder="Register Number" required />
-    <input type="text" id="participant3Dept" placeholder="Department" required />
-    <input type="text" id="participant3Stream" placeholder="Stream" required />
-    <input type="text" id="participant3Year" placeholder="Year" required />
-
-    <h3>Contact</h3>
-    <input type="email" id="teamLeaderEmail" placeholder="Email" required />
-    <input type="tel" id="teamLeaderPhone" placeholder="Phone Number" required />
-
-    <div class="spinner" id="loadingSpinner"></div>
-    <button type="submit">Submit</button>
-  </form>
-
-  <script>
-    document.getElementById("registrationForm").addEventListener("submit", async function(event) {
-      event.preventDefault();
-
-      const spinner = document.getElementById("loadingSpinner");
-      const button = document.querySelector("button[type='submit']");
-      spinner.style.display = "block";
-      button.style.display = "none";
-
-      const formData = {
-        teamName: document.getElementById("teamName").value,
-        teamLeaderReg: document.getElementById("teamLeaderReg").value,
-        teamLeaderName: document.getElementById("teamLeaderName").value,
-        teamLeaderDept: document.getElementById("teamLeaderDept").value,
-        teamLeaderStream: document.getElementById("teamLeaderStream").value,
-        teamLeaderYear: document.getElementById("teamLeaderYear").value,
-        participant1Name: document.getElementById("participant1Name").value,
-        participant1Reg: document.getElementById("participant1Reg").value,
-        participant1Dept: document.getElementById("participant1Dept").value,
-        participant1Stream: document.getElementById("participant1Stream").value,
-        participant1Year: document.getElementById("participant1Year").value,
-        participant2Name: document.getElementById("participant2Name").value,
-        participant2Reg: document.getElementById("participant2Reg").value,
-        participant2Dept: document.getElementById("participant2Dept").value,
-        participant2Stream: document.getElementById("participant2Stream").value,
-        participant2Year: document.getElementById("participant2Year").value,
-        participant3Name: document.getElementById("participant3Name").value,
-        participant3Reg: document.getElementById("participant3Reg").value,
-        participant3Dept: document.getElementById("participant3Dept").value,
-        participant3Stream: document.getElementById("participant3Stream").value,
-        participant3Year: document.getElementById("participant3Year").value,
-        teamLeaderEmail: document.getElementById("teamLeaderEmail").value,
-        teamLeaderPhone: document.getElementById("teamLeaderPhone").value
-      };
-
-      const url = "https://script.google.com/macros/s/AKfycbxmEhrX2QJb4uMZMgeMeCyGLodbx56LCaA_2BKJktRZ4H2Y4i4Qu9NvpuRc4AiYrIbk3g/exec"; // Paste your Web App URL here
-
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-        spinner.style.display = "none";
-        button.style.display = "block";
-
-        if (result.status === "Success") {
-          alert("✅ Registration successful!");
-          document.getElementById("registrationForm").reset();
-        } else {
-          alert("❌ Error: " + result.message);
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
-      } catch (error) {
-        spinner.style.display = "none";
-        button.style.display = "block";
-        alert("❌ Request failed: " + error.message);
-      }
-    });
-  </script>
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            margin: 5% auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        input, select, textarea {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: green;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: darkgreen;
+            transform: scale(1.05);
+        }
+
+        .spinner {
+            display: none;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+
+        img{
+            width: 50%;
+    height: 50%;
+
+        }
+        .image-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .back-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            height: 40px; /* Small height */
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .back-button::before {
+            content: "◀";
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bgVideo">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <div class="form-container">
+        <h2>Team Registration Form</h2>
+        <form id="registrationForm">
+            <input type="text" id="teamName" placeholder="Team Name" required>
+        
+            <h3>Team Leader</h3>
+            <input type="text" id="teamLeaderReg" placeholder="Register Number" required>
+            <input type="text" id="teamLeaderName" placeholder="Name" required>
+            <select id="teamLeaderDept" required>
+                <option value="" disabled selected>Department</option>
+                <option value="B.Sc">B.Sc</option>
+                <option value="M.Sc">M.Sc</option> 
+            </select>
+            <select id="teamLeaderStream" required>
+                <option value="" disabled selected>Stream</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <!-- <option value="Data Science">Data Science</option> -->
+            </select>
+            <select id="teamLeaderYear" required>
+                <option value="" disabled selected>Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option> 
+                <option value="3">3</option> 
+            </select>
+        
+            <h3>Participant 1</h3>
+            <input type="text" id="participant1Name" placeholder="Name" required>
+            <input type="text" id="participant1Reg" placeholder="Register Number" required>
+            <select id="participant1Dept" required>
+                <option value="" disabled selected>Department</option>
+                <option value="B.Sc">B.Sc</option>
+                <option value="M.Sc">M.Sc</option> 
+            </select>
+            <select id="participant1Stream" required>
+                <option value="" disabled selected>Stream</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <!-- <option value="Data Science">Data Science</option> -->
+            </select>
+            <select id="participant1Year" required>
+                <option value="" disabled selected>Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option> 
+                <option value="3">3</option> 
+            </select>
+        
+            <h3>Participant 2</h3>
+            <input type="text" id="participant2Name" placeholder="Name" required>
+            <input type="text" id="participant2Reg" placeholder="Register Number" required>
+            <select id="participant2Dept" required>
+                <option value="" disabled selected>Department</option>
+                <option value="B.Sc">B.Sc</option>
+                <option value="M.Sc">M.Sc</option> 
+            </select>
+            <select id="participant2Stream" required>
+                <option value="" disabled selected>Stream</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <!-- <option value="Data Science">Data Science</option> -->
+            </select>
+            <select id="participant2Year" required>
+                <option value="" disabled selected>Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option> 
+                <option value="3">3</option> 
+            </select>
+         
+            <h3>Participant 3</h3>
+            <input type="text" id="participant3Name" placeholder="Name" required>
+            <input type="text" id="participant3Reg" placeholder="Register Number" required>
+            <select id="participant3Dept" required>
+                <option value="" disabled selected>Department</option>
+                <option value="B.Sc">B.Sc</option>
+                <option value="M.Sc">M.Sc</option> 
+            </select>
+            <select id="participant3Stream" required>
+                <option value="" disabled selected>Stream</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Data Science">Data Science</option> 
+            </select>
+            <select id="participant3Year" required>
+                <option value="" disabled selected>Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option> 
+                <option value="3">3</option> 
+            </select>
+        
+            <h3>Contact</h3>
+            <input type="email" id="teamLeaderEmail" placeholder="Team Leader Email" required>
+            <input type="tel" id="teamLeaderPhone" placeholder="Team Leader Phone" required>
+            
+            <div class="spinner" id="loadingSpinner"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <center><a href="index.html" class="back-button">Back to Home</a></center><br><br>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+        
+            let formData = {
+                teamName: document.getElementById("teamName").value,
+                teamLeaderReg: document.getElementById("teamLeaderReg").value,
+                teamLeaderName: document.getElementById("teamLeaderName").value,
+                teamLeaderDept: document.getElementById("teamLeaderDept").value,
+                teamLeaderStream: document.getElementById("teamLeaderStream").value,
+                teamLeaderYear: document.getElementById("teamLeaderYear").value,
+                participant1Name: document.getElementById("participant1Name").value,
+                participant1Reg: document.getElementById("participant1Reg").value,
+                participant1Dept: document.getElementById("participant1Dept").value,
+                participant1Stream: document.getElementById("participant1Stream").value,
+                participant1Year: document.getElementById("participant1Year").value,
+                participant2Name: document.getElementById("participant2Name").value,
+                participant2Reg: document.getElementById("participant2Reg").value,
+                participant2Dept: document.getElementById("participant2Dept").value,
+                participant2Stream: document.getElementById("participant2Stream").value,
+                participant2Year: document.getElementById("participant2Year").value,
+                participant3Name: document.getElementById("participant3Name").value,
+                participant3Reg: document.getElementById("participant3Reg").value,
+                participant3Dept: document.getElementById("participant3Dept").value,
+                participant3Stream: document.getElementById("participant3Stream").value,
+                participant3Year: document.getElementById("participant3Year").value,
+                teamLeaderEmail: document.getElementById("teamLeaderEmail").value,
+                teamLeaderPhone: document.getElementById("teamLeaderPhone").value
+            };
+        
+            let url = "https://script.google.com/macros/s/AKfycbxmEhrX2QJb4uMZMgeMeCyGLodbx56LCaA_2BKJktRZ4H2Y4i4Qu9NvpuRc4AiYrIbk3g/exec";
+            try {
+                let response = await fetch(url, {
+                    method: "POST",
+                    mode: "no-cors", // Try removing if it doesn't work
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+        
+                alert("Registration Successful!");
+            } catch (error) {
+                alert("Error: " + error.message);
+            }
+        });
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+        
+            // Show loading spinner and disable the submit button
+            document.getElementById("loadingSpinner").style.display = "block";
+            document.querySelector("button[type='submit']").style.display = "none";
+        
+            // Simulate form submission delay (Replace this with actual submission code)
+            setTimeout(() => {
+                document.getElementById("registrationForm").reset();
+                document.getElementById("loadingSpinner").style.display = "none";
+                document.querySelector("button[type='submit']").style.display = "block";
+            }, 3000); // 3 seconds delay for simulation
+        });
+        </script>
+        
+        
+        
+        
 </body>
-</html>
-
-
-
-
-
-
-
