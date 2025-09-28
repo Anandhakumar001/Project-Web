@@ -442,7 +442,7 @@ function fetchProblemStatements() {
     document.querySelectorAll('.hack img').forEach(img => img.style.display = 'none');
     document.getElementById('organizing-text').style.display = 'none';
 
-    fetch('https://script.google.com/macros/s/AKfycbw6NB7qDPZ_bcu0ITVPWjhBxFMcR9kGpY2x_Hy3QXeWWDpFJAkdLRjfQqjrBAFjsls/exec')
+    fetch('https://script.google.com/macros/s/AKfycbxmEhrX2QJb4uMZMgeMeCyGLodbx56LCaA_2BKJktRZ4H2Y4i4Qu9NvpuRc4AiYrIbk3g/exec')
         .then(response => response.json())
         .then(data => {
             document.getElementById('spinner').style.display = 'none';
@@ -576,4 +576,5 @@ function showContact() {
         </script>
     </body>
     </html>
+
 
