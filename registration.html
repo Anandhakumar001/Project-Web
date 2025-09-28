@@ -6,12 +6,15 @@
   <title>Team Registration</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      color: white;
-      padding: 20px;
-    }
+  font-family: Arial, sans-serif;
+  color: white;
+  padding: 20px;
+  height: 100vh;        /* lock body height */
+  overflow: hidden;     /* stop page scrolling */
+}
+
 .background-video {
-  position: fixed;   /* stays fixed while scrolling */
+  position: fixed;   
   top: 0;
   left: 0;
   width: 100%;
@@ -22,17 +25,18 @@
 }
 
 form {
-  background: rgba(0, 0, 0, 0.3); /* transparent black overlay */
+  background: transparent;  /* fully transparent */
   padding: 20px;
   border-radius: 10px;
   max-width: 600px;
   margin: auto;
-  backdrop-filter: blur(5px); /* optional: glass effect */
+  height: 90vh;         
+  overflow-y: auto;     /* only form scrolls */
 }
 
 
     input, select {
-      width: 97%;
+      width: 96%;
       padding: 8px;
       margin: 5px 0 15px;
       border-radius: 5px;
@@ -177,6 +181,7 @@ form {
   </script>
 </body>
 </html>
+
 
 
 
